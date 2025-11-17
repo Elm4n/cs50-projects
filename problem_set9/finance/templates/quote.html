@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Get Quote
+{% endblock %}
+
+{% block main %}
+    <h2>Get Quote</h2>
+    <form action="/quote" method="post">
+        <div class="mb-3">
+            <input class="form-control" name="symbol" placeholder="Symbol" type="text" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Lookup</button>
+    </form>
+
+    {% if quote %}
+        <div class="alert alert-info mt-4">
+            A share of {{ quote["name"] }} ({{ quote["symbol"] }}) costs {{ quote["price"] | usd }}.
+        </div>
+    {% endif %}
+{% endblock %}
